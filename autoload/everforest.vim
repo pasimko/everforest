@@ -30,7 +30,39 @@ function! everforest#get_configuration() "{{{
         \ }
 endfunction "}}}
 function! everforest#get_palette(background, colors_override) "{{{
-  if a:background ==# 'hard' "{{{
+  if a:background ==# 'harder' "{{{
+    if &background ==# 'dark'
+      let palette1 = {
+            \ 'bg_dim':     ['#272e33',   '233'],
+            \ 'bg0':        ['#272e33',   '235'],
+            \ 'bg1':        ['#2e383c',   '236'],
+            \ 'bg2':        ['#374145',   '237'],
+            \ 'bg3':        ['#414b50',   '238'],
+            \ 'bg4':        ['#495156',   '239'],
+            \ 'bg5':        ['#4f5b58',   '240'],
+            \ 'bg_visual':  ['#4c3743',   '52'],
+            \ 'bg_red':     ['#493b40',   '52'],
+            \ 'bg_green':   ['#3c4841',   '22'],
+            \ 'bg_blue':    ['#384b55',   '17'],
+            \ 'bg_yellow':  ['#45443c',   '136'],
+            \ }
+    else
+      let palette1 = {
+            \ 'bg_dim':     ['#f2efdf',   '223'],
+            \ 'bg0':        ['#fffbef',   '230'],
+            \ 'bg1':        ['#f8f5e4',   '228'],
+            \ 'bg2':        ['#f2efdf',   '223'],
+            \ 'bg3':        ['#edeada',   '223'],
+            \ 'bg4':        ['#e8e5d5',   '223'],
+            \ 'bg5':        ['#bec5b2',   '223'],
+            \ 'bg_visual':  ['#f0f2d4',   '194'],
+            \ 'bg_red':     ['#ffe7de',   '217'],
+            \ 'bg_green':   ['#f3f5d9',   '194'],
+            \ 'bg_blue':    ['#ecf5ed',   '117'],
+            \ 'bg_yellow':  ['#fef2d5',   '226'],
+            \ }
+    endif "}}}
+  elseif a:background ==# 'hard' "{{{
     if &background ==# 'dark'
       let palette1 = {
             \ 'bg_dim':     ['#1e2326',   '233'],
@@ -173,14 +205,14 @@ function! everforest#highlight(group, fg, bg, ...) "{{{
         \ 'ctermfg=' . a:fg[1]
         \ 'ctermbg=' . a:bg[1]
         \ 'gui=' . (a:0 >= 1 ?
-          \ a:1 :
-          \ 'NONE')
+        \ a:1 :
+        \ 'NONE')
         \ 'cterm=' . (a:0 >= 1 ?
-          \ a:1 :
-          \ 'NONE')
+        \ a:1 :
+        \ 'NONE')
         \ 'guisp=' . (a:0 >= 2 ?
-          \ a:2[0] :
-          \ 'NONE')
+        \ a:2[0] :
+        \ 'NONE')
 endfunction "}}}
 function! everforest#syn_gen(path, last_modified, msg) "{{{
   " Generate the `after/syntax` directory.
